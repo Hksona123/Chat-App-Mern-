@@ -11,6 +11,15 @@ function Register() {
     confirmPassword: "",
   });
 
+  const toastOptions=
+    {
+      position: "bottom-right",
+      autoClose: 8000,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handleValidation();
@@ -20,15 +29,20 @@ function Register() {
     const {password, confirmPassword, username, email }=values;
     if(password!=confirmPassword)
     {
-      toast.error("Password and Confirm Password should be same.",{
-        position: "bottom-right",
-        autoClose: 8000,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "dark",
-      });
+      toast.error("Password and Confirm Password should be same.",toastOptions);
+      return false;
     }
-  }
+    else if(username.length<3)
+    {
+      toast.error("Username should be greater than 3 characters.",toastOptions);
+      return false;
+    }
+    else if(password.length<8)
+      {
+        toast.error("Password length should be greater than 8 characters.",toastOptions);
+        return false;
+      }
+  };
 
   const handleChange = (event) => {
     setValues({...values,[event.target.name]: event.target.value});
