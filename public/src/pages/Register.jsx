@@ -42,6 +42,10 @@ function Register() {
         toast.error("Password length should be greater than 8 characters.",toastOptions);
         return false;
       }
+      else if(email==="")
+        {
+          toast.error("Email is required.",toastOptions)
+        }
   };
 
   const handleChange = (event) => {
