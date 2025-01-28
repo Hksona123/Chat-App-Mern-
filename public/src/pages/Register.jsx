@@ -17,7 +17,7 @@ function Register() {
   };
 
   const handleChange = (event) => {
-    console.log(event.target.name, event.target.value);
+    setValues({...values,[event.target.name]: event.target.value});
   };
 
   return (
