@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
-
+import {ToastContainer, toast} from "react-toastify"
 function Register() {
   const [values, setValues] = useState({
     username: "",
@@ -13,8 +13,22 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Form submitted!");
+    handleValidation();
   };
+
+  const handleValidation=()=>{
+    const {password, confirmPassword, username, email }=values;
+    if(password!=confirmPassword)
+    {
+      toast.error("Password and Confirm Password should be same.",{
+        position: "bottom-right",
+        autoClose: 8000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
+    }
+  }
 
   const handleChange = (event) => {
     setValues({...values,[event.target.name]: event.target.value});
@@ -58,6 +72,7 @@ function Register() {
           </span>
         </form>
       </FormContainer>
+      <ToastContainer/>
     </>
   );
 }
