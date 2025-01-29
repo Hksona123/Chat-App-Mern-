@@ -17,7 +17,6 @@ function Register() {
       autoClose: 8000,
       pauseOnHover: true,
       draggable: true,
-      theme: "dark",
   };
 
   const handleSubmit = (event) => {
@@ -44,8 +43,10 @@ function Register() {
       }
       else if(email==="")
         {
-          toast.error("Email is required.",toastOptions)
+          toast.error("Email is required.",toastOptions);
+          return false;
         }
+        return true;
   };
 
   const handleChange = (event) => {
