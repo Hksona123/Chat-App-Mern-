@@ -17,6 +17,7 @@ function Register() {
       autoClose: 8000,
       pauseOnHover: true,
       draggable: true,
+      theme: "dark",
   };
 
   const handleSubmit = (event) => {
