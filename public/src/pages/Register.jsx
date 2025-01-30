@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import {ToastContainer, toast} from "react-toastify"
 import axios from "axios"
+import { registerRoute } from "../utils/APIRoutes";
 function Register() {
   const [values, setValues] = useState({
     username: "",
@@ -25,8 +26,13 @@ function Register() {
     event.preventDefault();
     if(handleValidation())
     {
+      console.log("in validation",registerRoute);
       const { password, confirmPassword, username, email} = values;
-      const { data } = await axios.post();
+      const { data } = await axios.post(registerRoute,{
+        username,
+        email,
+        password,
+      });
     }
   };
 
